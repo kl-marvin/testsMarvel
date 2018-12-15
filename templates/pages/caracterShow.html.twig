@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ parent() }} - Personnage {% endblock %}
+
+
+
+{% block body %}
+    <div class="container mt-5 mb-4 col-lg-4">
+        <div class="card">
+
+            <div class="card-header text-center titlecard">
+                {{ caracter.name }}
+            </div>
+            <div class="card-body">
+                <p>{{ caracter.age }} ans</p>
+                <p>
+                    {% if caracter.sex == 1 %}
+                <p>Sexe : <img src="{{ asset('img/masculine.png') }}" width="18px"></p>
+                {% elseif caracter.sex == 0 %}
+                    <p>Sexe : <img src="{{ asset('img/femenine.png') }}" width="18px"></p>
+                {% endif %}
+                </p>
+
+                <div class="row">
+                <table class="table col-lg-5">
+
+                    <thead class="">
+                    <tr>
+                        <th scope="col">Nom du Pouvoir</th>
+                        <th scope="col">Niveau</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td>{{ powersList.name }}</td>
+                            <td>{{ powersList.level }}</td>
+                        </tr>
+
+                    </tbody>
+
+                    <div>
+
+                    </div>
+
+                </table>
+                    <img class="ml-5" src="{{ asset('img/bw.jpg')}}"  alt="card-img" style="max-height: 200px;">
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

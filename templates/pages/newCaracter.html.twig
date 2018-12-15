@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ parent() }} - Créer votre personnage {% endblock %}
+
+
+{% block body %}
+    <div class="containter mt-4">
+        {{ form_star(form) }}
+        {{ form_widget(form) }}
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

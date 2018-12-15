@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ parent() }} - Dashboard {% endblock %}
+
+
+{%  block body %}
+
+    <div class="container">
+        <h1 class=" title2 mt-4 text-center"> Bienvenue fan de Marvel !</h1>
+        <h5 class="text-center">Sur ce site vous allez pouvoir ajouter de nouveaux personnages à votre univers
+            préféré. </h5>
+    </div>
+<div class="container mt-4">
+    <h3 class="title2">Vos personnages</h3>
+    <a href="{{ path('caracter.new') }}" class="btn btn-secondary">Créer un personnage</a>
+    <div class="row flew">
+
+        {% for caracters in caractersList %}
+
+            {% if caracters.filename %}
+                <img src="{{ vich_uploader_asset(caracters, 'imageFile') }}" alt="card-img-top" style="width: 100%; height: auto;" >
+            {% endif %}
+
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-header text-center titlecard">
+                        <div class="card-title">
+                            <a class="link" href="{{ path('caracter.show', {id: caracters.id}) }}">{{ caracters.name }}</a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                                    <span class="ml-4">
+                                    {% if caracters.sex == 1 %}
+                                        <p>Sexe : <img src="{{ asset('img/masculine.png') }}" width="18px"></p>
+                                    {% elseif caracters.sex == 0 %}
+                                        <p>Sexe : <img src="{{ asset('img/femenine.png') }}" width="18px"></p>
+                                    {% endif %}
+                                    </span>
+                            <span class="ml-5">{{ caracters.age }} ans</span>
+                        </div>
+                        <div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <h3 class="title2 mt-4">Vos pouvoirs</h3>
+        <table class="table table-bordered">
+
+            <thead class="titletable">
+            <tr>
+                <th scope="col">Nom du Pouvoir</th>
+                <th scope="col">Niveau</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for powers in powersList %}
+            <tr>
+                <td>{{ powers.name }}</td>
+                <td>{{ powers.level }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+
+        </table>
+
+
+
+
+
+
+{%  endblock %}

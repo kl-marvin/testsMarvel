@@ -1,0 +1,58 @@
+.section{
+    background-image: url("../img/marvel.jpg");
+}
+
+.title
+{
+    color: white;
+    text-transform: uppercase;
+    font-family: 'DIN Condensed';
+    font-size: 7em;
+    letter-spacing: 1px;
+}
+
+.lign
+{
+    background-color: #ed1d24;
+    height: 5px;
+}
+
+.lign2
+{
+    background-color: #ed1d24;
+    height: 98px;
+}
+
+
+.title2
+{
+    color: #ed1d24;
+    text-transform: uppercase;
+    font-family: 'DIN Alternate';
+    font-size: 2em;
+}
+
+
+.titlecard
+{
+    color: white;
+    background-color: #ed1d24!important;
+    font-size: 2em;
+    text-transform: uppercase;
+    font-family: 'DIN Alternate';
+}
+
+.link
+{
+    text-decoration: none!important;
+    color: white;
+}
+
+
+.titletable
+{
+    color: white;
+    background-color: #ed1d24!important;
+    font-size: 18px;
+    font-family: 'DIN Alternate';
+}
