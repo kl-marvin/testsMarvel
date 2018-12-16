@@ -39,7 +39,7 @@ class Caracters
 
 
     /**
-     * @var File|null
+     * @var File
      * @Vich\UploadableField(mapping="caracter_image", fileNameProperty="filename" )
      */
     private $imageFile;

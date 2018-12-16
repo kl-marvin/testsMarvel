@@ -27,19 +27,37 @@ class DashboardController extends AbstractController
         $this->em = $em;
     }
 
+
+
+
+
     /**
      * @Route("login/marvel", name="dashboard")
      */
     public function dashboardAction(CaractersRepository $caractersRepository, PowersRepository $powersRepository)
     {
 
-        $caractersList = $caractersRepository->findAll();
+        $caractersList = $caractersRepository->findBy([], ['id' => 'desc'], 8, 0);
         $powersList = $powersRepository->findAll();
 
         return $this->render('pages/dashboard.html.twig', [
             'caractersList' =>$caractersList,
             'powersList' => $powersList
             ]);
+    }
+
+
+    /**
+     * @Route("login/marvel/caracters", name="caracters")
+     */
+    public function showAllCaracters(CaractersRepository $caractersRepository)
+    {
+        $allCaracters = $caractersRepository->findAll();
+
+        return $this->render('pages/allcaracters.html.twig', [
+            'allCaracters' => $allCaracters
+        ]);
+
     }
 
 
@@ -71,8 +89,8 @@ class DashboardController extends AbstractController
         {
             $this->em->persist($caracter);
             $this->em->flush();
-            $this->addFlash('success', 'Ton persongge a bien été ajouté !');
-            return $this->redirectToRoute('pages/dashboard.html.twig');
+            $this->addFlash('success', 'Ton personage a bien été ajouté !');
+            return $this->redirectToRoute('dashboard');
         }
         return $this->render('pages/newCaracter.html.twig', [
             'caracter' => $caracter,

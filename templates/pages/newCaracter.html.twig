@@ -3,9 +3,21 @@
 
 
 {% block body %}
-    <div class="containter mt-4">
-        {{ form_star(form) }}
+    <a href="{{ path('dashboard') }}" class="btn btn-marvel fa fa-chevron-left" id="margin"><span class="btn-text">Retour</span></a>
+    <div class="container mt-4 mb-3 ">
+        <h2 class="text-center title2">Créer un nouveau personnage </h2>
+
+        {{ form_start(form) }}
+            <div class="row">
+                    <div class="col-md-12">{{ form_row(form.name) }}</div>
+            </div>
+        <div class="row">
+            <div class="col-md-2">{{ form_row(form.age) }}</div>
+            <div class="col-md-2">{{ form_row(form.sex) }}</div>
+        </div>
+
         {{ form_widget(form) }}
+        <button class="btn btn-marvel">Créer </button>
         {{ form_end(form) }}
     </div>
 {% endblock %}

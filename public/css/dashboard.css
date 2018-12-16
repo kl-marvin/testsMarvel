@@ -23,6 +23,16 @@
     height: 98px;
 }
 
+.lign3
+{
+    background-color: #ed1d24;
+    height: 2px;
+    width: 28%;
+    margin-left: 20%;
+    margin-bottom: 18px;
+    margin-top: -10px;
+}
+
 
 .title2
 {
@@ -55,4 +65,94 @@
     background-color: #ed1d24!important;
     font-size: 18px;
     font-family: 'DIN Alternate';
+}
+
+.btn-marvel
+{
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+    background-color: #ed1d24;
+    color: white;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-family: "DIN Alternate";!important;
+}
+
+.btn-text
+{
+    font-family: "DIN Alternate";
+}
+
+.btn-marvel:hover
+{
+    text-decoration-style: none;!important;
+    color: white;
+    background-color: #504a4a;
+}
+
+
+
+.img-card:hover{
+    opacity: 0.80;
+
+}
+
+.img-card{
+    max-height: 180px;
+    min-height: 180px;
+}
+
+.card-body
+{
+    min-height: 160px;
+}
+
+
+.image-parallax
+{
+    background-image: url("../img/marvel3.jpg");
+    background-color: black;
+    min-height: 550px;
+    background-attachment: fixed;
+    position: relative;
+    opacity: 0.70;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.nebula
+{
+    background-image: url("../img/nebula2.jpg");
+    height: 800px;
+    background-size: cover;
+}
+
+
+.caractername
+{
+    color: white;
+    text-transform: uppercase;
+    font-family: "DIN Alternate";
+    letter-spacing: 2px;
+    margin-top: 15px;!important;
+    margin-left: 20%;
+    font-size: 48px!important;
+}
+
+.caracterinfos
+{
+    color: white;
+}
+
+#margin
+{
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.powers
+{
+    color: white;
+    margin-top: 10px;
 }

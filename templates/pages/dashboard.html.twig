@@ -2,53 +2,65 @@
 {% block title %}{{ parent() }} - Dashboard {% endblock %}
 
 
-{%  block body %}
+{% block body %}
+
+    <div class="main-body">
+
 
     <div class="container">
         <h1 class=" title2 mt-4 text-center"> Bienvenue fan de Marvel !</h1>
         <h5 class="text-center">Sur ce site vous allez pouvoir ajouter de nouveaux personnages à votre univers
             préféré. </h5>
     </div>
-<div class="container mt-4">
+
+    <div class="container mt-4">
     <h3 class="title2">Vos personnages</h3>
-    <a href="{{ path('caracter.new') }}" class="btn btn-secondary">Créer un personnage</a>
+        {%  for messages in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ messages }}
+            </div>
+        {% endfor %}
+    <a href="{{ path('caracter.new') }}" class="btn btn-marvel mb3 fa fa-plus-circle mb-3"><span class="btn-text"> Créer un personnage</span> </a>
+        <a href="{{ path('caracters') }}" class="btn btn-marvel mb-3"><span>Afficher tous</span></a>
+
     <div class="row flew">
 
         {% for caracters in caractersList %}
 
-            {% if caracters.filename %}
-                <img src="{{ vich_uploader_asset(caracters, 'imageFile') }}" alt="card-img-top" style="width: 100%; height: auto;" >
-            {% endif %}
-
             <div class="col-3">
-                <div class="card">
-                    <div class="card-header text-center titlecard">
+                <div class="card mb-4">
+                    <a href="{{ path('caracter.show', {id: caracters.id}) }}"><img src="../img/caracters/{{ caracters.filename }}"
+                                                                                   class="card-img-top img-card"></a>
+                    <div class="card-body text-center titlecard">
                         <div class="card-title">
-                            <a class="link" href="{{ path('caracter.show', {id: caracters.id}) }}">{{ caracters.name }}</a>
+                            {{ caracters.name }}
                         </div>
                     </div>
-                    <div class="card-body">
-                        <div class="row">
-                                    <span class="ml-4">
-                                    {% if caracters.sex == 1 %}
-                                        <p>Sexe : <img src="{{ asset('img/masculine.png') }}" width="18px"></p>
-                                    {% elseif caracters.sex == 0 %}
-                                        <p>Sexe : <img src="{{ asset('img/femenine.png') }}" width="18px"></p>
-                                    {% endif %}
-                                    </span>
-                            <span class="ml-5">{{ caracters.age }} ans</span>
-                        </div>
-                        <div>
-
-                        </div>
-                    </div>
-
                 </div>
             </div>
+
+
+
+
+
         {% endfor %}
     </div>
 
-    <h3 class="title2 mt-4">Vos pouvoirs</h3>
+    </div>
+
+
+
+    <div class="image-parallax mt-5">
+
+
+    </div>
+
+
+
+
+    <div class="container mt-3">
+        <h3 class="title2 mt-4">Vos pouvoirs</h3>
+        <a href="{{ path('caracter.new') }}" class="btn btn-marvel mb3 fa fa-plus-circle mb-3 "><span class="btn-text"> Créer un pouvoir</span> </a>
         <table class="table table-bordered">
 
             <thead class="titletable">
@@ -59,18 +71,22 @@
             </thead>
             <tbody>
             {% for powers in powersList %}
-            <tr>
-                <td>{{ powers.name }}</td>
-                <td>{{ powers.level }}</td>
-            </tr>
+                <tr>
+                    <td>{{ powers.name }}</td>
+                    <td>{{ powers.level }}</td>
+                </tr>
             {% endfor %}
             </tbody>
 
         </table>
+    </div>
 
 
 
 
 
 
-{%  endblock %}
+
+
+
+{% endblock %}
