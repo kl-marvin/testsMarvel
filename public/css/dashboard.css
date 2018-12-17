@@ -1,7 +1,3 @@
-.section{
-    background-image: url("../img/marvel.jpg");
-}
-
 .title
 {
     color: white;
@@ -47,9 +43,27 @@
 {
     color: white;
     background-color: #ed1d24!important;
-    font-size: 2em;
+    font-size: 2em!important;
     text-transform: uppercase;
     font-family: 'DIN Alternate';
+}
+
+
+.card-body
+{
+    color:  white;
+    font-size: 18px!important;
+    text-transform: uppercase;
+    font-family: 'DIN Alternate';
+    background-color: #2a292d;
+
+
+}
+
+.lign4
+{
+    height: 4px;
+    background-color: #ed1d24;
 }
 
 .link
@@ -65,6 +79,17 @@
     background-color: #ed1d24!important;
     font-size: 18px;
     font-family: 'DIN Alternate';
+}
+
+
+.table
+{
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+}
+
+thead
+{
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
 }
 
 .btn-marvel
@@ -90,21 +115,28 @@
     background-color: #504a4a;
 }
 
+.card-img-top
+{
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+}
 
 
-.img-card:hover{
+
+.img-card:hover
+{
     opacity: 0.80;
 
 }
 
 .img-card{
-    max-height: 180px;
-    min-height: 180px;
+    max-height: 290px;
+    min-height: 290px;
 }
 
 .card-body
 {
-    min-height: 160px;
+    min-height: 100px;
+
 }
 
 
@@ -119,6 +151,7 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
 }
 
 .nebula
@@ -156,3 +189,4 @@
     color: white;
     margin-top: 10px;
 }
+

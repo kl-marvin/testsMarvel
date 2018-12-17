@@ -5,7 +5,8 @@
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <title>{% block title %}Mayhem in Marvel{% endblock %}</title>
     {% block stylesheets %}{% endblock %}
 </head>
@@ -20,39 +21,38 @@
 {% block body %}
 
 
-        <div class="nebula">
+<div class="nebula">
 
-               <a href="{{ path('dashboard') }}" class="btn btn-marvel fa fa-chevron-left" id="margin"><span class="btn-text">Retour</span></a>
+    <a href="{{ path('dashboard') }}" class="btn btn-marvel fa fa-chevron-left" id="margin"><span class="btn-text">Retour</span></a>
 
-                <div class="caractername"> {{ caracter.name }}</div>
-                 <div class="lign3"></div>
-
-
-                <div class="container">
-
-                <span class="caracterinfos mr-3" id="margin">{{ caracter.age }} ans</span>
-                    {% if caracter.sex == 1 %}
-                <span class="caracterinfos">Sexe : <img src="{{ asset('img/masculine.png') }}" width="18px"></span>
-                {% elseif caracter.sex == 0 %}
-                    <span class="caracterinfos">Sexe : <img src="{{ asset('img/femenine.png') }}" width="18px"></span>
-                    {% endif %}
-
-                <div class="row powers">
-
-                    {{ powersList.name }}
-                    -
-                    {{ powersList.level }}
-
-                </div>
+    <div class="caractername"> {{ caracter.name }}</div>
+    <div class="lign3"></div>
 
 
+    <div class="container">
+
+        <span class="caracterinfos mr-3" id="margin">{{ caracter.age }} ans</span>
+        {% if caracter.sex == 1 %}
+            <span class="caracterinfos">Sexe : <img src="{{ asset('img/masculine.png') }}" width="18px"></span>
+        {% elseif caracter.sex == 0 %}
+            <span class="caracterinfos">Sexe : <img src="{{ asset('img/femenine.png') }}" width="18px"></span>
+        {% endif %}
+
+        <div class="powers">
+
+            {% for power in caracter.powers  %}
+
+           <div>{{ power.name }} - {{ power.level }}</div>
 
 
-
-
-            </div>
+            {% endfor %}
 
         </div>
+
+
+    </div>
+
+</div>
 
 
 <div class="lign2">

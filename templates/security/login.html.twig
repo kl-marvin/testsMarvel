@@ -7,7 +7,7 @@
 
             {% if errors %}
                 <div class="alert alert-danger">
-                    {{ errors.messageKey| trans(errors.messagesdata, 'security') }}
+                    {{ errors.messageKey| trans(errors.messageData, 'security') }}
                 </div>
             {% endif %}
             <form action="{{ path('login') }}" method="post">

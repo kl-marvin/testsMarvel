@@ -4,30 +4,35 @@
 
 {% block body %}
 
-    <a href="{{ path('dashboard') }}" class="btn btn-marvel fa fa-chevron-left" id="margin"><span class="btn-text">Retour</span></a>
-<div class="container mt-4">
-    <h3 class="title2">Vos personnages</h3>
-    <a href="{{ path('caracter.new') }}" class="btn btn-marvel mb3 fa fa-plus-circle mb-3 mt-2"><span class="btn-text"> Créer un personnage</span> </a>
+    <a href="{{ path('dashboard') }}" class="btn btn-marvel fa fa-chevron-left" id="margin">
+        <span class="btn-text">Retour</span></a>
+    <div class="container mt-4">
+        <h3 class="title2">Vos personnages</h3>
+        <a href="{{ path('caracter.new') }}" class="btn btn-marvel mb3 fa fa-plus-circle mb-3 mt-2">
+            <span class="btn-text"> Créer un personnage</span> </a>
 
 
-    <div class="row flew">
+        <div class="row flew">
 
-        {% for caracters in allCaracters %}
+            {% for caracters in allCaracters %}
 
-            <div class="col-3">
-                <div class="card">
-                    <a href="{{ path('caracter.show', {id: caracters.id}) }}"><img src="../img/caracters/{{ caracters.filename }}"
-                                                                               class="card-img-top img-card"></a>
-                    <div class="card-body text-center titlecard">
-                        <div class="card-title">
-                            {{ caracters.name }}
+                <div class="col-3">
+                    <div class="card mb-3">
+                        <a href="{{ path('caracter.show', {id: caracters.id}) }}"><img
+                                    src="../img/caracters/{{ caracters.filename }}"
+                                    class="card-img-top img-card">
+                        </a>
+                        <div class="lign4"></div>
+                        <div class="card-body">
+                            <div class="card-title">
+                                {{ caracters.name }}
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        {% endfor %}
-    </div>
+            {% endfor %}
+        </div>
 
-</div>
+    </div>
 
 {% endblock %}

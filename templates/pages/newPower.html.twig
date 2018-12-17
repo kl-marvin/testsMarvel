@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ parent() }} - Créer votre personnage {% endblock %}
+
+
+{% block body %}
+    <a href="{{ path('dashboard') }}" class="btn btn-marvel fa fa-chevron-left" id="margin"><span class="btn-text">Retour</span></a>
+    <div class="container mt-4 mb-3 ">
+        <h2 class="text-center title2">Créer un nouveau pouvoir </h2>
+
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button class="btn btn-marvel">Créer </button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

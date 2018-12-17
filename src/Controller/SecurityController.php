@@ -6,8 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
-class SecurityController extends AbstractController{
-
+class SecurityController extends AbstractController
+{
     /**
      * @Route ("/login", name="login")
      */
@@ -17,7 +17,7 @@ class SecurityController extends AbstractController{
         $errors = $authenticationUtils->getLastAuthenticationError();
         return $this->render("security/login.html.twig", [
             'last_Username' => $lastUsername,
-            'errors' =>$errors
+            'errors' => $errors
         ]);
     }
 }

@@ -14,53 +14,44 @@
     </div>
 
     <div class="container mt-4">
-    <h3 class="title2">Vos personnages</h3>
-        {%  for messages in app.flashes('success') %}
+        <h3 class="title2">Vos personnages</h3>
+        {% for messages in app.flashes('success') %}
             <div class="alert alert-success">
                 {{ messages }}
             </div>
         {% endfor %}
-    <a href="{{ path('caracter.new') }}" class="btn btn-marvel mb3 fa fa-plus-circle mb-3"><span class="btn-text"> Créer un personnage</span> </a>
+        <a href="{{ path('caracter.new') }}" class="btn btn-marvel mb3 fa fa-plus-circle mb-3"><span class="btn-text"> Créer un personnage</span>
+        </a>
         <a href="{{ path('caracters') }}" class="btn btn-marvel mb-3"><span>Afficher tous</span></a>
 
-    <div class="row flew">
+        <div class="row flew">
 
-        {% for caracters in caractersList %}
-
-            <div class="col-3">
-                <div class="card mb-4">
-                    <a href="{{ path('caracter.show', {id: caracters.id}) }}"><img src="../img/caracters/{{ caracters.filename }}"
-                                                                                   class="card-img-top img-card"></a>
-                    <div class="card-body text-center titlecard">
-                        <div class="card-title">
-                            {{ caracters.name }}
+            {% for caracters in caractersList %}
+                <div class="col-3">
+                    <div class="card mb-4">
+                        <a href="{{ path('caracter.show', {id: caracters.id}) }}"><img
+                                    src="../img/caracters/{{ caracters.filename }}"
+                                    class="card-img-top img-card"></a>
+                        <div class="lign4"></div>
+                        <div class="card-body">
+                            <div class="card-title">
+                                {{ caracters.name }}
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-
-
-
-
-        {% endfor %}
-    </div>
+            {% endfor %}
+        </div>
 
     </div>
 
 
-
-    <div class="image-parallax mt-5">
-
-
-    </div>
-
-
-
+    <div class="image-parallax mt-5"></div>
 
     <div class="container mt-3">
         <h3 class="title2 mt-4">Vos pouvoirs</h3>
-        <a href="{{ path('caracter.new') }}" class="btn btn-marvel mb3 fa fa-plus-circle mb-3 "><span class="btn-text"> Créer un pouvoir</span> </a>
+        <a href="{{ path('power.new') }}" class="btn btn-marvel mb3 fa fa-plus-circle mb-3 "><span class="btn-text"> Créer un pouvoir</span>
+        </a>
         <table class="table table-bordered">
 
             <thead class="titletable">
@@ -77,7 +68,6 @@
                 </tr>
             {% endfor %}
             </tbody>
-
         </table>
     </div>
 

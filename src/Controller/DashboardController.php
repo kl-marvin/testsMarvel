@@ -3,90 +3,84 @@
 namespace App\Controller;
 
 
-use App\Entity\Caracters;
-use App\Entity\Powers;
+use App\Entity\Caracter;
+use App\Entity\Power;
 use App\Form\CaracterType;
-use App\Repository\CaractersRepository;
-use App\Repository\PowersRepository;
+use App\Form\PowerType;
+use App\Repository\CaracterRepository;
+use App\Repository\PowerRepository;
 use Doctrine\Common\Persistence\ObjectManager;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
-
+/**
+ * Class DashboardController
+ * @package App\Controller
+ *
+ * @Security("is_granted('ROLE_USER')")
+ */
 class DashboardController extends AbstractController
 {
-
 
     /**
      * @param ObjectManager $em
      */
     public function __construct(ObjectManager $em)
     {
-
         $this->em = $em;
     }
 
-
-
-
-
     /**
-     * @Route("login/marvel", name="dashboard")
+     * @Route("/", name="dashboard")
      */
-    public function dashboardAction(CaractersRepository $caractersRepository, PowersRepository $powersRepository)
+    public function dashboardAction(CaracterRepository $caractersRepository, PowerRepository $powersRepository)
     {
-
         $caractersList = $caractersRepository->findBy([], ['id' => 'desc'], 8, 0);
         $powersList = $powersRepository->findAll();
 
         return $this->render('pages/dashboard.html.twig', [
-            'caractersList' =>$caractersList,
+            'caractersList' => $caractersList,
             'powersList' => $powersList
-            ]);
+        ]);
     }
 
-
     /**
-     * @Route("login/marvel/caracters", name="caracters")
+     * @Route("marvel/caracters", name="caracters")
      */
-    public function showAllCaracters(CaractersRepository $caractersRepository)
+    public function showAllCaracters(CaracterRepository $caractersRepository)
     {
         $allCaracters = $caractersRepository->findAll();
 
         return $this->render('pages/allcaracters.html.twig', [
             'allCaracters' => $allCaracters
         ]);
-
     }
 
-
     /**
-     * @Route("login/marvel/caracterShow/{id}", name="caracter.show")
+     * @Route("marvel/caracterShow/{id}", name="caracter.show")
      */
-    public function showCaracterAction(Caracters $caracterList, Powers $powersList)
+    public function showCaracterAction(Caracter $caracter)
     {
 
         return $this->render('pages/caracterShow.html.twig', [
-            'caracter' => $caracterList,
-            'powersList' => $powersList
+            'caracter' => $caracter
         ]);
     }
 
-
     /**
-     * @Route("login/marvel/newCaracter", name="caracter.new")
-     * @param Caracters $caracter
+     * @Route("marvel/newCaracter", name="caracter.new")
+     * @param Caracter $caracter
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function createAction(Request $request)
     {
-        $caracter = new caracters();
+        $caracter = new Caracter();
         $form = $this->createForm(CaracterType::class, $caracter);
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid())
-        {
+        if ($form->isSubmitted() && $form->isValid()) {
             $this->em->persist($caracter);
             $this->em->flush();
             $this->addFlash('success', 'Ton personage a bien été ajouté !');
@@ -94,6 +88,30 @@ class DashboardController extends AbstractController
         }
         return $this->render('pages/newCaracter.html.twig', [
             'caracter' => $caracter,
+            'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("marvel/newPower", name="power.new")
+     * @param Request $request
+     * @param Power $power
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function createPowerAction(Request $request)
+    {
+        $power = new Power();
+        $form = $this->createForm(PowerType::class, $power);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->em->persist($power);
+            $this->em->flush();
+            $this->addFlash('success', 'Ton pouvoir a bien été ajouté !');
+            return $this->redirectToRoute('dashboard');
+        }
+        return $this->render('pages/newPower.html.twig', [
+            'power' => $power,
             'form' => $form->createView()
         ]);
     }

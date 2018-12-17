@@ -2,8 +2,8 @@
 
 namespace App\Form;
 
-use App\Entity\Caracters;
-use App\Entity\Powers;
+use App\Entity\Caracter;
+use App\Entity\Power;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -26,11 +26,11 @@ class CaracterType extends AbstractType
                 'label' => 'Sexe',
                 'choices' => $this->getChoices()
             ])
-            ->add('caractersPowers', EntityType::class, [
+            ->add('powers', EntityType::class, [
                 'label' => 'Pouvoirs',
-                'class' => 'App\Entity\Powers',
+                'class' => Power::class,
                 'multiple' => true,
-
+                'expanded' => true,
             ])
             ->add('imageFile', FileType::class, [
                 'required' => true,
@@ -43,13 +43,13 @@ class CaracterType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Caracters::class,
+            'data_class' => Caracter::class,
         ]);
     }
 
     private function getChoices()
     {
-        $choices = Caracters::SEX;
+        $choices = Caracter::SEX;
         $output = [];
         foreach ($choices as $k => $v){
             $output[$v] = $k;
