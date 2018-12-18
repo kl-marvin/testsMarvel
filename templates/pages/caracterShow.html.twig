@@ -38,18 +38,16 @@
             <span class="caracterinfos">Sexe : <img src="{{ asset('img/femenine.png') }}" width="18px"></span>
         {% endif %}
 
-        <div class="powers">
+        <div class="powers mt-2">
 
             {% for power in caracter.powers  %}
 
-           <div>{{ power.name }} - {{ power.level }}</div>
+           <div>{{ power.name }} - Niveau {{ power.level }}</div>
 
 
             {% endfor %}
 
         </div>
-
-
     </div>
 
 </div>
